@@ -1,6 +1,6 @@
 class Game_Life
-	@@board_size = 10
-	@@generation = 10
+	@@board_size = 5
+	@@generation = 4
 	def print_board
 		@@board.each do |column|
          column.each do |card|
@@ -20,7 +20,7 @@ class Game_Life
       @@board_size.times do
         column = []
         @@board_size.times do
-          column.push '0'
+          column.push  Random.rand(2)
         end
         @@board.push column
      end
@@ -39,7 +39,12 @@ class Game_Life
 	def start
 		empty_board
 		for i in 0..@@generation-1
-
+			for coorx in 0..@@board_size-1
+	        	for coory in 0..@@board_size-1
+	        		@@auxboard[coorx][coory] = Rules.new.check_rules(coorx, coory)
+	        	end
+	    	end
+	    	@@board = @@auxboard
 			puts "Generation " + (i + 1).to_s
 			print_board
 			puts
