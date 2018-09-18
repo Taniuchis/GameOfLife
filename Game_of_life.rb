@@ -1,15 +1,22 @@
 class Game_Life
 	@@board_size = 5
-	@@generation = 2
+	@@generation = 10
 	def print_board
 		@@board.each do |column|
          column.each do |card|
-          print card
+         	if card == 0
+         		 print ' ' 
+         	else
+         		print  '■'
+         	end 
+            # ■
+          	#print card
           print '  ' 
          end
         puts
         
       end
+
 	end
 
 	def  empty_board
@@ -39,7 +46,8 @@ class Game_Life
 	def start
 		empty_board
 		for i in 0..@@generation-1
-			
+			sleep 1.2
+		    system 'clear' 
 			puts "Generation " + (i + 1).to_s
 			print_board
 			puts
