@@ -1,6 +1,12 @@
 class Game_Life
-	@@board_size = 5
+  attr_accessor :board_size
+
+  def initialize
+    @board_size = 5
+  end
+	
 	@@generation = 10
+
   def print_board
     @@board.each do |column|
     column.each do |card|
@@ -19,17 +25,17 @@ class Game_Life
     @@board = []
     @@auxboard = []
     # llenar tablero
-    @@board_size.times do
+    board_size.times do
       column = []
-      @@board_size.times do
+      board_size.times do
         column.push(Random.rand(2))
       end
       @@board.push(column)
     end
     # llenar tablero aux
-    @@board_size.times do
+    board_size.times do
       column = []
-      @@board_size.times do
+      board_size.times do
         column.push('0')
       end
       @@auxboard.push(column)
@@ -44,9 +50,9 @@ class Game_Life
     	puts "Generation " + (i + 1).to_s
     	print_board
     	puts
-    	for coorx in 0..@@board_size-1
-      	for coory in 0..@@board_size-1
-      		@@auxboard[coorx][coory] = Rules.new.check_rules(coorx, coory)
+    	for coorx in 0..board_size-1
+      	for coory in 0..board_size-1
+      		@@auxboard[coorx][coory] = Rules.new.check_rules(coorx, coory, board_size)
       	end
       end
       @@board = @@auxboard
