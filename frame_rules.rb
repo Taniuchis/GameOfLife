@@ -4,22 +4,9 @@ module FrameRules
     aliveCells = 0
     aliveCells = neighbour_top(@board_size,col, aliveCells)
     #same row 
-    if (@board[row][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = same_row(row,col, aliveCells)
     #under
-    if (@board[row + 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = under_row(row,col, aliveCells)
     return aliveCells
   end
 
@@ -27,86 +14,38 @@ module FrameRules
     aliveCells = 0
     aliveCells = neighbour_top(row,col, aliveCells)
     #same row 
-    if (@board[row][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = same_row(row,col, aliveCells)
     #under
-    if (@board[0][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[0][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[0][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = under_row(0,col, aliveCells)
     return aliveCells
   end
 
   def edge_left(row,col)
     aliveCells = 0
-    if (@board[row - 1][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(row - 1,@board_size - 1, aliveCells)
+    aliveCells = rul_if(row - 1,col, aliveCells)
+    aliveCells = rul_if(row - 1,col + 1, aliveCells)
     #same row 
-    if (@board[row][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = same_row_corner(row,col,aliveCells)
     #under
-    if (@board[row + 1][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(row,@board_size - 1, aliveCells)
+    aliveCells = rul_if(row + 1,col, aliveCells)
+    aliveCells = rul_if(row + 1,col + 1, aliveCells)
     return aliveCells
   end
 
    def edge_right(row,col)
     aliveCells = 0
-    if (@board[row - 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][0] == 1) 
-        aliveCells+=1
-    end
-
+    aliveCells = rul_if(row - 1,col - 1, aliveCells)
+    aliveCells = rul_if(row + 1,col, aliveCells)
+    aliveCells = rul_if(row - 1,0, aliveCells)
     #same row 
-    if (@board[row][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][0] == 1) 
-        aliveCells+=1
-    end
-
+    aliveCells = rul_if(row,col - 1, aliveCells)
+    aliveCells = rul_if(row,0, aliveCells)
     #under
-    if (@board[row + 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][0] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(row + 1,col - 1, aliveCells)
+    aliveCells = rul_if(row + 1,col, aliveCells)
+    aliveCells = rul_if(row + 1,0, aliveCells)
     return aliveCells
   end
   

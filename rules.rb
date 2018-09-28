@@ -54,36 +54,43 @@ module Rules
       #top
       aliveCells = neighbour_top(row,col, aliveCells)
       #same row 
-      if (@board[row][col - 1] == 1) 
-       aliveCells += 1 
-      end
-      if (@board[row][col + 1] == 1) 
-       aliveCells += 1 
-      end
+      aliveCells = same_row(row,col, aliveCells)
       #under
-      if (@board[row + 1][col - 1] == 1) 
-      aliveCells += 1 
-      end
-      if (@board[row + 1][col] == 1) 
-      aliveCells += 1 
-      end
-      if (@board[row + 1][col + 1] == 1) 
-       aliveCells += 1 
-      end
+      aliveCells = under_row(row,col, aliveCells)
       return aliveCells
     end
 
     def neighbour_top(row,col, aliveCells)
       #top
-      if (@board[row - 1][col - 1] == 1) 
-      aliveCells += 1 
+      aliveCells = rul_if(row-1,col-1, aliveCells)
+      aliveCells = rul_if(row-1,col, aliveCells)
+      aliveCells = rul_if(row-1,col+1, aliveCells)
+      return aliveCells
+    end
+
+    def same_row(row,col, aliveCells)
+      aliveCells = rul_if(row,col-1, aliveCells)
+      aliveCells = rul_if(row,col+1, aliveCells)
+      return aliveCells
+    end
+
+    def under_row(row,col, aliveCells)
+      aliveCells = rul_if(row+1,col-1, aliveCells)
+      aliveCells = rul_if(row+1,col, aliveCells)
+      aliveCells = rul_if(row+1,col+1, aliveCells)
+      return aliveCells
+    end
+
+    def rul_if(row,col,aliveCells)
+      if (@board[row][col] == 1) 
+        aliveCells += 1 
       end
-      if (@board[row - 1][col] == 1) 
-      aliveCells += 1 
-      end
-      if (@board[row - 1][col + 1] == 1) 
-       aliveCells += 1 
-      end
+      return aliveCells
+    end
+
+    def same_row_corner(row,col, aliveCells)
+      aliveCells = rul_if(row,@board_size - 1, aliveCells)
+      aliveCells = rul_if(row,col + 1, aliveCells)
       return aliveCells
     end
 

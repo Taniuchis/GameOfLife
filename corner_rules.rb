@@ -4,112 +4,55 @@ module CornerRules
     aliveCells = 0
     aliveCells = neighbour_top(@board_size,col, aliveCells)
     #same row 
-    if (@board[row][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = same_row_corner(row,col,aliveCells)
     #under
-    if (@board[row + 1][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col + 1] == 1) 
-        aliveCells+=1
-    end
-    #print aliveCells
+    aliveCells = rul_if(row + 1,@board_size - 1, aliveCells)
+    aliveCells = rul_if(row + 1,col, aliveCells)
+    aliveCells = rul_if(row + 1,col + 1, aliveCells)
     return aliveCells
   end
 
    def rigth_corner_top(row,col)
     aliveCells = 0
     #top
-    if (@board[@board_size - 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[@board_size - 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[@board_size - 1][0] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(@board_size - 1,col- 1, aliveCells)
+    aliveCells = rul_if(@board_size - 1,col, aliveCells)
+    aliveCells = rul_if(@board_size - 1,0, aliveCells)
     #same row 
-    if (@board[row][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][0] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(row,col- 1, aliveCells)
+    aliveCells = rul_if(row,0, aliveCells)
     #under
-    if (@board[row + 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row + 1][0] == 1) 
-        aliveCells+=1
-    end
-     # puts "Celulas vivas rigth corner top"
-     # puts aliveCells
-     return aliveCells
+    aliveCells = rul_if(row + 1,col- 1, aliveCells)
+    aliveCells = rul_if(row + 1,col, aliveCells)
+    aliveCells = rul_if(row + 1,0, aliveCells)
+    return aliveCells
   end
 
   def left_corner_down(row,col)
     aliveCells = 0
     aliveCells = neighbour_top(row,col, aliveCells)
     #same row 
-    if (@board[row][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = same_row_corner(row,col,aliveCells)
     #under
-    if (@board[0][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[0][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[0][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(0,@board_size - 1, aliveCells)
+    aliveCells = rul_if(0,col, aliveCells)
+    aliveCells = rul_if(0,col + 1, aliveCells)
     return aliveCells
   end
 
   def rigth_corner_down(row,col)
     aliveCells = 0
     #top
-    if (@board[row - 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][0] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(row - 1,col - 1, aliveCells)
+    aliveCells = rul_if(row - 1,col, aliveCells)
+    aliveCells = rul_if(row - 1,0, aliveCells)
     #same row 
-    if (@board[row][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row][0] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(row,col - 1, aliveCells)
+    aliveCells = rul_if(row ,0, aliveCells)
     #under
-    if (@board[0][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[0][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[0][0] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = rul_if(0,col - 1, aliveCells)
+    aliveCells = rul_if(0,col, aliveCells)
+    aliveCells = rul_if(0,0, aliveCells)
     return aliveCells
   end
 
