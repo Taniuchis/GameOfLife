@@ -19,10 +19,9 @@ class Game_Life
     @board.each do |column|
     column.each do |card|
       if card == 0
-        print '0' 
+        print ' ' 
       else
-     	  #print  '■'
-        print '1'
+     	  print  '■'
       end 
         print '  ' 
       end
@@ -60,8 +59,8 @@ class Game_Life
   def start
     empty_board
     for i in 0..@generation-1
-    	#sleep 1.2
-      #system 'clear' 
+    	sleep 1.2
+      system 'clear' 
     	puts "Generation " + (i + 1).to_s
     	print_board
     	puts

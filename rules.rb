@@ -11,8 +11,6 @@ module Rules
     aliveCells = 0
     row = coorx
     col = coory
-    print row
-    print col
     #puts
     if (row != 0 && row != @board_size - 1 && col != 0 && col != @board_size - 1) 
       aliveCells = middle_cells(row,col)
@@ -52,15 +50,10 @@ module Rules
     end
 	currentCell = @board[coorx][coory]
     cell = Death.new.live_die(aliveCells , currentCell) #val of cell
-    puts "muere"
-    print cell 
-    print ","
     return cell	
 	end
 
   def middle_cells(row,col)
-    #print row
-    #print col
     aliveCells = 0
     #top
     if (@board[row - 1][col - 1] == 1) 
@@ -89,7 +82,6 @@ module Rules
     if (@board[row + 1][col + 1] == 1) 
          aliveCells += 1 
     end
-    #print '(' + aliveCells.to_s + ')'
     return aliveCells
   end
  #end 

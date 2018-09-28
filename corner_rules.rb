@@ -1,11 +1,6 @@
 require_relative 'rules'
 module Corner_Rules 
- #class Corner_Rules < Rules
 	def left_corner_top(row,col)
-    #print row
-    #print col
-    #puts
-
     aliveCells = 0
     #top
     if (@board[@board_size - 1][@board_size - 1] == 1) 
