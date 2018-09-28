@@ -1,6 +1,10 @@
 require_relative 'Game_of_life'
 class Death
-	def live_die(aliveCells,currentCell )
+	def live_die(aliveCells,currentCell ) 
+    print "celula v/m"
+    print currentCell
+    print "vecinos"
+    print aliveCells
     if (currentCell == 1 && aliveCells < 2) 
       return 0
     end
