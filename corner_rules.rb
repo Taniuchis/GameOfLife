@@ -1,17 +1,8 @@
 require_relative 'rules'
-module Corner_Rules 
+module CornerRules 
 	def left_corner_top(row,col)
     aliveCells = 0
-    #top
-    if (@board[@board_size - 1][@board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[@board_size - 1][0] == 1) 
-        aliveCells+=1
-    end
-    if (@board[@board_size - 1][1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = neighbour_top(@board_size,col, aliveCells)
     #same row 
     if (@board[row][@board_size - 1] == 1) 
         aliveCells+=1
@@ -69,16 +60,7 @@ module Corner_Rules
 
   def left_corner_down(row,col)
     aliveCells = 0
-    #top
-    if (@board[row - 1][board_size - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = neighbour_top(row,col, aliveCells)
     #same row 
     if (@board[row][@board_size - 1] == 1) 
         aliveCells+=1

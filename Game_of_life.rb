@@ -1,8 +1,6 @@
 require_relative 'rules'
 class Game_Life
  include Rules
-  #@@board = []
-  #@@auxboard = []
   attr_accessor :board_size
   attr_accessor :generation
   attr_accessor :board
@@ -49,9 +47,9 @@ class Game_Life
     end
 	end
   def empty_auxboard
-    for coorx in 0..@board_size-1
-        for coory in 0..@board_size-1
-          @auxboard[coorx][coory] = 0
+    for position_x in 0..@board_size-1
+        for position_y in 0..@board_size-1
+          @auxboard[position_x][position_y] = 0
         end
     end
   end
@@ -64,10 +62,9 @@ class Game_Life
     	puts "Generation " + (i + 1).to_s
     	print_board
     	puts
-    	for coorx in 0..board_size-1
-      	for coory in 0..board_size-1
-      		@auxboard[coorx][coory] = check_rules(coorx, coory)
-         #print @@auxboard[coorx][coory].to_s
+    	for position_x in 0..board_size-1
+      	for position_y in 0..board_size-1
+      		@auxboard[position_x][position_y] = check_rules(position_x, position_y)
       	end
       end
       @board = @auxboard

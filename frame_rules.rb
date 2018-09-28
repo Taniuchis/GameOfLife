@@ -1,18 +1,8 @@
 require_relative 'rules'
-#class Frame_Rules < Rules
-module Frame_Rules 
-
+module FrameRules 
 	def edge_central_top(row,col)
     aliveCells = 0
-    if (@board[@board_size - 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[@board_size - 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[@board_size - 1][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = neighbour_top(@board_size,col, aliveCells)
     #same row 
     if (@board[row][col - 1] == 1) 
         aliveCells+=1
@@ -35,15 +25,7 @@ module Frame_Rules
 
   def edge_central_down(row,col)
     aliveCells = 0
-    if (@board[row - 1][col - 1] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col] == 1) 
-        aliveCells+=1
-    end
-    if (@board[row - 1][col + 1] == 1) 
-        aliveCells+=1
-    end
+    aliveCells = neighbour_top(row,col, aliveCells)
     #same row 
     if (@board[row][col - 1] == 1) 
         aliveCells+=1
