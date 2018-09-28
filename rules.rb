@@ -51,16 +51,7 @@ module Rules
 
     def middle_cells(row,col)
       aliveCells = 0
-      # #top
-      # if (@board[row - 1][col - 1] == 1) 
-      # aliveCells += 1 
-      # end
-      # if (@board[row - 1][col] == 1) 
-      # aliveCells += 1 
-      # end
-      # if (@board[row - 1][col + 1] == 1) 
-      #  aliveCells += 1 
-      # end
+      #top
       aliveCells = neighbour_top(row,col, aliveCells)
       #same row 
       if (@board[row][col - 1] == 1) 
